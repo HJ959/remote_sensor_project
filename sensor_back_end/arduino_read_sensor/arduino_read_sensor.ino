@@ -6,31 +6,39 @@
  * print to serial for Pi to read, 
  * part of remote sensor project.
  */
-
-#define moisture A0
-#define temp A1
-#define IR 2
-
-float tempValue;
+////////////////////////////////////////////////////////////////////
+#define temp A0
+#define moisture A1
+////////////////////////////////////////////////////////////////////
 int moistValue;
-float tempC;
-
+int  Kelvin, Celsius;
+////////////////////////////////////////////////////////////////////
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(INPUT, IR);
+  pinMode(temp, INPUT);
+  pinMode(moisture, INPUT);
 }
-
+////////////////////////////////////////////////////////////////////
 void loop() {
-  // put your main code here, to run repeatedly:
-  moistValue = analogRead(moisture);
-  tempValue = analogRead(temp);
-
-  int IR_read = digitalRead(IR);
-
-  // roughly calibrate the analogue input every 2 steps are 
-
-  Serial.println(IR_read);
   delay(1000);
+
+  // Read analog voltage and convert it to Kelvin (0.489 = 500/1023)
+  Kelvin = analogRead(temp) * 0.489;  
   
+  // Convert Kelvin to degree Celsius  
+  Celsius = Kelvin - 273;               
+  
+  if (Celsius < 0) {
+    // Absolute value
+    Celsius = abs(Celsius);     
+  }
+
+  moistValue = analogRead(moisture);
+
+  Serial.print("Temp: ");
+  Serial.print(Celsius);
+  Serial.print(", Moisture: ");
+  Serial.println(moistValue);
 }
+////////////////////////////////////////////////////////////////////
