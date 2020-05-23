@@ -49,8 +49,7 @@ if __name__ == '__main__':
     # write the data to a text file
     with open('sensor_data.json', 'w') as f:
         json.dump(json_read, f, sort_keys=True, indent=4)
-
-    
+ 
     pygame.init()
     pygame.camera.init()
     camlist = pygame.camera.list_cameras()
@@ -58,5 +57,5 @@ if __name__ == '__main__':
         cam = pygame.camera.Camera(camlist[0],(640,480))
         cam.start()
         image = cam.get_image()
-        pygame.image.save(image, "spy_cam_" + today  + ".jpg")
+        pygame.image.save(image, "spy_cam/spy_cam_" + today  + ".jpg")
 
