@@ -26,4 +26,4 @@ python3 read_post_data.py
 git add --all
 git commit -m "Backend sensor upload - $now"
 git push -u origin master
-
+git config --global credential.helper 'cache --timeout=3700'
