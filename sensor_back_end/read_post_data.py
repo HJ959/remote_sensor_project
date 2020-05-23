@@ -5,6 +5,9 @@ from datetime import datetime
 import re
 import json
 import ast
+import pygame
+import pygame.camera
+from pygame.locals import *
 ##############################################################################
 if __name__ == '__main__':
     # b'Temp: 34, Moisture: 1023\r\n'
@@ -37,7 +40,23 @@ if __name__ == '__main__':
         json_read.update(io)
         print(json_read)
 
+    # remove the example key
+    try:
+        del json_read['example_json']
+    except:
+        print('Json file exists')
+
     # write the data to a text file
     with open('sensor_data.json', 'w') as f:
         json.dump(json_read, f, sort_keys=True, indent=4)
+
+    
+    pygame.init()
+    pygame.camera.init()
+    camlist = pygame.camera.list_cameras()
+    if camlist:
+        cam = pygame.camera.Camera(camlist[0],(640,480))
+        cam.start()
+        image = cam.get_image()
+        pygame.image.save(image, "spy_cam_" + today  + ".jpg")
 

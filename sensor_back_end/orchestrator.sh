@@ -15,7 +15,7 @@ output_png="out%d_$now.png"
 
 if [ ! -f "sensor_data.json" ]
 then
-	echo "{}" > sensor_data.json
+	echo '{"example_json": {"temp": "25", "moisture": "670"}}' > sensor_data.json
 fi
 
 python3 read_post_data.py
