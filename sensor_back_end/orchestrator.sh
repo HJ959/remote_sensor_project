@@ -13,8 +13,13 @@ now="$(date | cut -d ' ' -f 3,4,5 | tr ' ' _ | tr ':' '-')"
 output_mp4="output_$now.mp4"
 output_png="out%d_$now.png"
 
+if [ ! -f "sensor_data.json" ]
+then
+	echo "{}" > sensor_data.json
+fi
+
 python3 read_post_data.py
 
-ffmpeg -y -f v4l2 -framerate 1 -video_size 640x480 -i /dev/video0 -t 1 $output_mp4
+#ffmpeg -y -f v4l2 -framerate 1 -video_size 640x480 -i /dev/video0 -t 1 $output_mp4
 
-ffmpeg -i $output_mp4 -vf fps=1 out%d.png
+#ffmpeg -i $output_mp4 -vf fps=1 out%d.png
