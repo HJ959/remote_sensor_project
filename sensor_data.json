@@ -30,5 +30,17 @@
     "23_05_2020_1651": {
         "Celsius": "69",
         "Moisture_level": "1023"
+    },
+    "23_05_2020_1711": {
+        "Celsius": "64",
+        "Moisture_level": "1022"
+    },
+    "23_05_2020_1712": {
+        "Celsius": "64",
+        "Moisture_level": "1023"
+    },
+    "23_05_2020_1714": {
+        "Celsius": "65",
+        "Moisture_level": "1022"
     }
 }
