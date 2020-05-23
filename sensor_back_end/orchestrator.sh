@@ -20,8 +20,9 @@ if [ ! -f "sensor_data.json" ]
 then
 	echo '{"example_json": {"temp": "25", "moisture": "670"}}' > sensor_data.json
 fi
-
-python3 read_post_data.py
+current_dir=$(pwd)
+echo $current_dir
+#python3 "$current_dir/read_post_data.py"
 
 git add --all
 git commit -m "Backend sensor upload - $now"
