@@ -26,7 +26,7 @@ fi
 
 python3 $git_dir/sensor_back_end/read_post_data.py
 
-git --git-dir $git_dir/.git add --all
+git --git-dir $git_dir/.git add $git_dir/sensor_back_end
 git --git-dir $git_dir/.git commit -m "Backend sensor upload - $now"
 git --git-dir $git_dir/.git push -u origin master
 git --git-dir $git_dir/.git config --global credential.helper 'cache --timeout=3700'
