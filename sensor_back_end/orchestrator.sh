@@ -19,7 +19,7 @@ now="$(date | cut -d ' ' -f 3,4,5 | tr ' ' _ | tr ':' '-')"
 output_mp4="output_$now.mp4"
 output_png="out%d_$now.png"
 
-if [ ! -f "sensor_back_end/sensor_data.json" ]
+if [ ! -f "/sensor_back_end/sensor_data.json" ]
 then
 	echo '{"example_json": {"temp": "25", "moisture": "670"}}' > sensor_back_end/sensor_data.json
 fi
