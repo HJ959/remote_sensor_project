@@ -1,6 +1,1 @@
-{
-    "24_05_2020_2125": {
-        "Celsius": "37",
-        "Moisture_level": "1023"
-    }
-}
+{"example_json": {"temp": "25", "moisture": "670"}}

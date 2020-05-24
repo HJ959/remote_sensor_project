@@ -35,7 +35,7 @@ if __name__ == '__main__':
         
         io[today] = {'Celsius': temp, 'Moisture_level': moist}
     
-    with open('sensor_back_end/sensor_data.json', 'r') as f:
+    with open('/sensor_back_end/sensor_data.json', 'r') as f:
         json_read = json.loads(f.read())
         json_read.update(io)
         print(json_read)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         print('Json file exists')
 
     # write the data to a text file
-    with open('sensor_back_end/sensor_data.json', 'w') as f:
+    with open('/sensor_back_end/sensor_data.json', 'w') as f:
         json.dump(json_read, f, sort_keys=True, indent=4)
  
     pygame.init()
@@ -57,5 +57,5 @@ if __name__ == '__main__':
         cam = pygame.camera.Camera(camlist[0],(640,480))
         cam.start()
         image = cam.get_image()
-        pygame.image.save(image, "sensor_back_end/spy_cam/spy_cam_" + today  + ".jpg")
+        pygame.image.save(image, "/sensor_back_end/spy_cam/spy_cam_" + today  + ".jpg")
 
