@@ -8,8 +8,12 @@ import ast
 import pygame
 import pygame.camera
 from pygame.locals import *
+import sys
 ##############################################################################
 if __name__ == '__main__':
+    json_file = sys.argv[1]
+    spy_cam_dir = sys.argv[2]
+
     # b'Temp: 34, Moisture: 1023\r\n'
     re_temp = re.compile(r'Temp: (.+?),') # group 1
     re_moist = re.compile(r'Moisture: ([0-9]+)') # group 1
@@ -35,7 +39,7 @@ if __name__ == '__main__':
         
         io[today] = {'Celsius': temp, 'Moisture_level': moist}
     
-    with open('/sensor_back_end/sensor_data.json', 'r') as f:
+    with open(json_file, 'r') as f:
         json_read = json.loads(f.read())
         json_read.update(io)
         print(json_read)
@@ -47,7 +51,7 @@ if __name__ == '__main__':
         print('Json file exists')
 
     # write the data to a text file
-    with open('/sensor_back_end/sensor_data.json', 'w') as f:
+    with open(json_file, 'w') as f:
         json.dump(json_read, f, sort_keys=True, indent=4)
  
     pygame.init()
@@ -57,5 +61,5 @@ if __name__ == '__main__':
         cam = pygame.camera.Camera(camlist[0],(640,480))
         cam.start()
         image = cam.get_image()
-        pygame.image.save(image, "/sensor_back_end/spy_cam/spy_cam_" + today  + ".jpg")
+        pygame.image.save(image, spy_cam_dir + "/spy_cam_" + today  + ".jpg")
 

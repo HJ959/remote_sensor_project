@@ -12,19 +12,23 @@
 # path
 cd /home/pi/remote_sensor_project
 
+# find the scripts and files
+json_file=$(find $HOME -name "sensor_data.json")
+python_script=$(find $HOME -name "read_post_data.py")
+spy_cam_dir=$(find $HOME -name "spy_cam")
+
 # check for repo updates (handy if wanting to edit script remotely)
 git pull
 
+# get the date
 now="$(date | cut -d ' ' -f 3,4,5 | tr ' ' _ | tr ':' '-')"
-output_mp4="output_$now.mp4"
-output_png="out%d_$now.png"
 
-if [ ! -f "/sensor_back_end/sensor_data.json" ]
+if [ ! -f "$json_file" ]
 then
 	echo '{"example_json": {"temp": "25", "moisture": "670"}}' > sensor_back_end/sensor_data.json
 fi
 
-python3 sensor_back_end/read_post_data.py
+python3 $python_script $json_file $spy_cam_dir
 
 git add --all
 git commit -m "Backend sensor upload - $now"
