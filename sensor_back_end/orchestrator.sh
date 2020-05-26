@@ -16,6 +16,7 @@ cd /home/pi/remote_sensor_project
 json_file=$(find $HOME -name "sensor_data.json")
 python_script=$(find $HOME -name "read_post_data.py")
 spy_cam_dir=$(find $HOME -name "spy_cam")
+audio_dir=$(find $HOME -name "spy_audio_dir")
 
 # check for repo updates (handy if wanting to edit script remotely)
 git pull
@@ -29,6 +30,7 @@ then
 fi
 
 python3 $python_script $json_file $spy_cam_dir
+ffmpeg -y -f alsa -ac 1 -ar 44100 -i default:CARD=K6 -t 2 $audio_dir/audio_$now.mp3
 
 git add --all
 git commit -m "Backend sensor upload - $now"
