@@ -10,5 +10,9 @@
     "May_19-00-04_BST": {
         "Celsius": "43",
         "Moisture_level": "1023"
+    },
+    "May_20-00-03_BST": {
+        "Celsius": "47",
+        "Moisture_level": "1023"
     }
 }
