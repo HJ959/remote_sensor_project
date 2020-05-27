@@ -33,7 +33,7 @@ python3 $python_script $json_file $spy_cam_dir
 
 audio_file=$audio_dir/audio_$now.mp3
 ffmpeg -y -f alsa -ac 1 -ar 44100 -i default:CARD=E1 -t 2 $audio_file
-ffmpeg -y -i $audio_file -filter:a "volume=1.5" $audio_file
+ffmpeg -y -i $audio_file -filter:a "volume=2.0" $audio_file
 
 git add --all
 git commit -m "Backend sensor upload - $now"
