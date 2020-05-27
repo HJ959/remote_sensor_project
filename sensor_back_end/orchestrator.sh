@@ -29,7 +29,7 @@ then
 	echo '{"example_json": {"temp": "25", "moisture": "670"}}' > sensor_back_end/sensor_data.json
 fi
 
-python3 $python_script $json_file $spy_cam_dir
+python3 $python_script $json_file $spy_cam_dir $now
 
 audio_file=$audio_dir/audio_$now.mp3
 ffmpeg -y -f alsa -ac 1 -ar 44100 -i default:CARD=E1 -t 2 $audio_file
