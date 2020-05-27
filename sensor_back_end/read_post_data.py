@@ -1,7 +1,6 @@
 ##############################################################################
 import serial
 from time import sleep
-from datetime import datetime
 import re
 import json
 import ast
@@ -13,6 +12,7 @@ import sys
 if __name__ == '__main__':
     json_file = sys.argv[1]
     spy_cam_dir = sys.argv[2]
+    bash_time = sys.argv[3]
 
     # b'Temp: 34, Moisture: 1023\r\n'
     re_temp = re.compile(r'Temp: (.+?),') # group 1
@@ -20,8 +20,7 @@ if __name__ == '__main__':
 
     ser = serial.Serial('/dev/ttyACM0', 9600)
     
-    now = datetime.now()
-    today = now.strftime('%d_%m_%Y_%H%M')
+    today = bash_time
 
     for i in range(0, 100):
         sleep(0.02)
