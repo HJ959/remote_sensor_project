@@ -1,1 +1,6 @@
-{"example_json": {"temp": "25", "moisture": "670"}}
+{
+    "May_18-47-36_BST": {
+        "Celsius": "46",
+        "Moisture_level": "1023"
+    }
+}
